@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zypsy Frontend Exercise
 
-## Getting Started
+The purpose of this challenge is to assess your daily work approach. We mostly use React and TypeScript at Zypsy, but you can use any tools you feel most comfortable with.
 
-First, run the development server:
+## Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+We want you to develop entirely new view of posts list. Posts are accessible by category. Posts can have many categories.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- When clicking on a category, category's posts are displayed. Selected category should be maintained if user reloads the page in the browser
+- When clicking on a star icon, category is marked as favorite
+- User can view **All categories** or filter by **Favorite categories**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Dev this task just like you'd dev a fully fledged application feature, that you plan to maintain long term. Use any libraries you want. We value excellent UX, attention to details, code quality, readability and performance. The more skills you show us, the better.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create your code in `frontend` directory and send us Git repository.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See this [Figma file](https://www.figma.com/design/OD5mg9TPnDblgUKlaJUJi2/Zypsy-Frontend-Exercise?t=mYeZQlhZz6wkbkHy-1).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Alternatively, you can use `design.png` file.
 
-## Deploy on Vercel
+## Starting the backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project requires **node >=18.19**, so check if you have the correct version. Install yarn globally `npm install -g yarn`, then install the dependencies with `yarn` on the backend folder.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run `yarn` in backend folder to install dependencies. Run the server with `yarn start`. The API is served at [http://localhost:9000](http://localhost:9000/), and you can go to `/docs` to explore the API documentation.
