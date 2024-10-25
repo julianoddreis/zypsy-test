@@ -33,13 +33,13 @@ export function Sidebar({ categories }: SidebarProps) {
             selected={type === FilterType.All}
             onChange={() => onTypeChange(FilterType.All)}
             id="radio-option-all"
-            label={"All categories"}
+            label="All categories"
           />
           <Radio
             selected={type === FilterType.Favorites}
             onChange={() => onTypeChange(FilterType.Favorites)}
             id="radio-option-favorites"
-            label={"Favorites"}
+            label="Favorites"
           />
         </div>
         <div className={Styles.Categories}>

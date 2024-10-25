@@ -1,6 +1,7 @@
-import classNames from "classnames";
-import Styles from "./star.module.css";
 import { useCallback } from "react";
+import classNames from "classnames";
+
+import Styles from "./star.module.css";
 
 type StarType = "primary" | "secondary";
 
