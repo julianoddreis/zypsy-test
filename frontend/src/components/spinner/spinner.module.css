@@ -1,8 +1,16 @@
 .Spinner {
   shape-rendering: auto;
   animation: spinner-animation 1s linear infinite;
+}
+
+.Small {
   width: 20px;
   height: 20px;
+}
+
+.Big {
+  width: 92px;
+  height: 92px;
 }
 
 .Primary {

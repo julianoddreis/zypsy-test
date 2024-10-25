@@ -1,9 +1,11 @@
+import { ICategory } from "@/domain/category/models";
 import { usePosts } from "@/hooks/posts";
 import { useFilters } from "@/providers/filter";
+import { Loader } from "@/components/loader";
+
+import { Post } from "./post";
 
 import Styles from "./posts-list.module.css";
-import { ICategory } from "@/domain/category/models";
-import { Post } from "./post/post";
 
 interface PostsList {
   readonly categories: Array<ICategory>;
@@ -15,11 +17,11 @@ export function PostsList({ categories }: PostsList) {
   const { posts } = usePosts(category.id);
 
   if (posts.loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (posts.failed) {
-    return <div>Failed</div>;
+    return <div>Sorry, check the dev logs and try again.</div>;
   }
 
   return (

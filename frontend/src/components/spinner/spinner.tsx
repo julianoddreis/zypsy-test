@@ -1,33 +1,23 @@
-import { useRef } from "react";
-
-import Styles from "./spinner.module.css";
 import classNames from "classnames";
-
-const AnimationDuration = 1000;
+import Styles from "./spinner.module.css";
 
 type SpinnerType = "primary" | "secondary";
 
 interface SpinnerProps {
   readonly type: SpinnerType;
+  readonly size: "small" | "big";
 }
 
-export function Spinner({ type }: SpinnerProps) {
-  const mountTime = useRef<number | null>(null);
-
-  if (mountTime.current === null) {
-    mountTime.current = Date.now();
-  }
-
+export function Spinner({ type, size }: SpinnerProps) {
   return (
     <svg
       className={classNames(Styles.Spinner, {
         [Styles.Primary]: type === "primary",
         [Styles.Secondary]: type === "secondary",
+        [Styles.Small]: size === "small",
+        [Styles.Big]: size === "big",
       })}
       preserveAspectRatio="xMidYMid"
-      style={{
-        animationDelay: `${-(mountTime.current % AnimationDuration)}ms`,
-      }}
       viewBox="0 0 100 100"
     >
       <circle

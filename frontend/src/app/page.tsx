@@ -1,9 +1,10 @@
 "use client";
 
 import { FilterProvider } from "@/providers/filter";
+import { CategoriesProvider, useCategories } from "@/providers/categories";
 import { Sidebar } from "@/components/sidebar";
 import { PostsList } from "@/components/posts-list";
-import { CategoriesProvider, useCategories } from "@/providers/categories";
+import { Loader } from "@/components/loader/loader";
 
 import Styles from "./page.module.css";
 
@@ -19,11 +20,11 @@ function Home() {
   const { categories } = useCategories();
 
   if (categories.loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (categories.failed) {
-    return <div>Failed</div>;
+    return <div>Sorry, check the dev logs and try again.</div>;
   }
 
   return (

@@ -26,7 +26,7 @@ export function Button({ label, icon, loading, type, onClick }: ButtonProps) {
       })}
     >
       <span>{label}</span>
-      {loading ? <Spinner type={type} /> : icon}
+      {loading ? <Spinner size="small" type={type} /> : icon}
     </button>
   );
 }
