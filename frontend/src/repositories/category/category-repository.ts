@@ -4,6 +4,7 @@ import { ICategoryRepository } from "@/domain/category/repository";
 import { createPost, IPost } from "@/domain/post/models";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const DEFAULT_CATEGORY_STORAGE_KEY = "@zypsy/default-category";
 
 class _CategoryRepository implements ICategoryRepository {
   async list(): Promise<Array<ICategory>> {
@@ -52,6 +53,21 @@ class _CategoryRepository implements ICategoryRepository {
     return json.map((post) => {
       return createPost(post);
     });
+  }
+
+  getDefaultCategory(): ICategory | null {
+    const result = localStorage.getItem(DEFAULT_CATEGORY_STORAGE_KEY);
+    if (result === null) {
+      return null;
+    }
+    return createCategory(JSON.parse(result));
+  }
+
+  setDefaultCategory(category: ICategory): void {
+    localStorage.setItem(
+      DEFAULT_CATEGORY_STORAGE_KEY,
+      JSON.stringify(category)
+    );
   }
 }
 

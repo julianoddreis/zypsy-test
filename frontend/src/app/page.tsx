@@ -1,10 +1,10 @@
 "use client";
 
-import { FilterProvider } from "@/providers/filter";
-import { CategoriesProvider, useCategories } from "@/providers/categories";
-import { Sidebar } from "@/components/sidebar";
-import { PostsList } from "@/components/posts-list";
 import { Loader } from "@/components/loader/loader";
+import { PostsList } from "@/components/posts-list";
+import { Sidebar } from "@/components/sidebar";
+import { CategoriesProvider, useCategories } from "@/providers/categories";
+import { FilterProvider } from "@/providers/filter";
 
 import Styles from "./page.module.css";
 
@@ -28,7 +28,7 @@ function Home() {
   }
 
   return (
-    <FilterProvider initialCategory={categories.value[0]}>
+    <FilterProvider>
       <div className={Styles.Page}>
         <Sidebar categories={categories.value} />
         <PostsList categories={categories.value} />

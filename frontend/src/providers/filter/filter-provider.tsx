@@ -1,16 +1,24 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
+
 import { FilterContext, FilterType } from "./filter-context";
 import { ICategory } from "@/domain/category/models";
-import React from "react";
+import { CategoryRepository } from "@/repositories/category";
+import { useCategories } from "@/providers/categories";
 
 interface IFilterProvider {
-  readonly initialCategory: ICategory;
   readonly children: ReactNode;
 }
 
-export function FilterProvider({ initialCategory, children }: IFilterProvider) {
+export function FilterProvider({ children }: IFilterProvider) {
+  const { getDefaultCategory } = useCategories();
+
   const [type, setType] = useState<FilterType>(FilterType.All);
-  const [category, setCategory] = useState<ICategory>(initialCategory);
+  const [category, setCategory] = useState<ICategory>(getDefaultCategory());
+
+  const handleChangeCategory = useCallback((category: ICategory) => {
+    setCategory(category);
+    CategoryRepository.setDefaultCategory(category);
+  }, []);
 
   return (
     <FilterContext.Provider
@@ -18,7 +26,7 @@ export function FilterProvider({ initialCategory, children }: IFilterProvider) {
         type,
         category: category,
         onTypeChange: setType,
-        onCategoryChange: setCategory,
+        onCategoryChange: handleChangeCategory,
       }}
     >
       {children}

@@ -6,6 +6,7 @@ import { ICategory } from "@/domain/category/models";
 interface ICategoriesContext {
   readonly categories: Async<Array<ICategory>>;
   readonly refresh: () => void;
+  readonly getDefaultCategory: () => ICategory;
 }
 
 export const CategoriesContext = createContext<ICategoriesContext | null>(null);

@@ -32,8 +32,23 @@ export function CategoriesProvider({ children }: ICategoriesProvider) {
     fetchCategories(true);
   }, [fetchCategories]);
 
+  const getDefaultCategory = useCallback(() => {
+    const stored = CategoryRepository.getDefaultCategory();
+    if (stored) {
+      return stored;
+    }
+
+    if (!task.done) {
+      throw new Error("Default category called before categories are loaded");
+    }
+
+    return task.value[0];
+  }, [task]);
+
   return (
-    <CategoriesContext.Provider value={{ categories: task, refresh }}>
+    <CategoriesContext.Provider
+      value={{ categories: task, refresh, getDefaultCategory }}
+    >
       {children}
     </CategoriesContext.Provider>
   );

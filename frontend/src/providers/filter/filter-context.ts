@@ -1,5 +1,6 @@
-import { ICategory } from "@/domain/category/models";
 import { createContext, useContext } from "react";
+
+import { ICategory } from "@/domain/category/models";
 
 export enum FilterType {
   All = "all",

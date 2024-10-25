@@ -5,4 +5,6 @@ export interface ICategoryRepository {
   list(): Promise<Array<ICategory>>;
   setFavorite(category: ICategory, favorite: boolean): Promise<void>;
   listPosts(id: string): Promise<Array<IPost>>;
+  getDefaultCategory(): ICategory | null;
+  setDefaultCategory(category: ICategory): void;
 }
