@@ -1,15 +1,28 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./page.module.css";
-import { Button } from "@/components/button";
-import { Radio } from "@/components/radio";
+import { useCategories } from "@/hooks/categories";
+import { FilterProvider } from "@/providers/filter";
+
+import Styles from "./page.module.css";
+import { Sidebar } from "@/components/sidebar";
 
 export default function Home() {
+  const { categories } = useCategories();
+
+  if (categories.loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (categories.failed) {
+    return <div>Failed</div>;
+  }
+
   return (
-    <div className={styles.page}>
-      <Button label="teste" type={"primary"}></Button>
-      <Radio selected={true} onChange={() => {}}></Radio>
-    </div>
+    <FilterProvider initialCategoryId={categories.value[0].id}>
+      <div className={Styles.Page}>
+        <Sidebar categories={categories.value} />
+        {/* <PostsList /> */}
+      </div>
+    </FilterProvider>
   );
 }

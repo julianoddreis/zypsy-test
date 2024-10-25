@@ -1,0 +1,27 @@
+.Component {
+  width: 20px;
+  height: 20px;
+  fill: none;
+}
+
+.Primary {
+  path {
+    stroke: var(--primary-foreground);
+  }
+  &.Favorite {
+    path {
+      fill: var(--primary-foreground);
+    }
+  }
+}
+
+.Secondary {
+  path {
+    stroke: var(--primary);
+  }
+  &.Favorite {
+    path {
+      fill: var(--primary);
+    }
+  }
+}

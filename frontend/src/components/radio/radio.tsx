@@ -4,20 +4,21 @@ import classNames from "classnames";
 import Styles from "./radio.module.css";
 
 interface RadioProps {
+  readonly id: string;
+  readonly label: string;
   readonly selected: boolean;
-  readonly className?: string;
   readonly onChange: () => void;
   readonly children?: never;
 }
 
-export function Radio({ selected, className, onChange }: RadioProps) {
+export function Radio({ id, label, selected, onChange }: RadioProps) {
   return (
-    <div
-      className={classNames(Styles.Component, className, {
-        [Styles.Selected]: selected,
-      })}
-    >
-      <input checked={selected} type="radio" onChange={onChange} />
+    <div className={Styles.Component}>
+      <div
+        className={classNames(Styles.Radio, { [Styles.Selected]: selected })}
+      />
+      <input id={id} checked={selected} type="radio" onChange={onChange} />
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }

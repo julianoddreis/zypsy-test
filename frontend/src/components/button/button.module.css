@@ -1,4 +1,8 @@
 .Button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding: 8px 24px;
   font-size: 14px;
   font-weight: 600;
@@ -7,6 +11,7 @@
   border: none;
   outline: none;
   cursor: pointer;
+  gap: 8px;
 }
 
 .Primary {
@@ -18,10 +23,4 @@
   color: var(--primary);
   border: 1px solid var(--primary);
   background-color: var(--surface);
-}
-
-.Icon {
-  width: 20px;
-  height: 20px;
-  margin-left: 8px;
 }
