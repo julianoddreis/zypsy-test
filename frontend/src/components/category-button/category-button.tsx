@@ -34,6 +34,7 @@ export function CategoryButton({ category }: CategoryButtonProps) {
       await CategoryRepository.setFavorite(category, newValue);
       refresh();
     } catch (error) {
+      console.error(error);
       setFavorite(!newValue);
     } finally {
       setLoading(false);
@@ -42,7 +43,7 @@ export function CategoryButton({ category }: CategoryButtonProps) {
 
   const handleChange = useCallback(() => {
     onCategoryChange(category);
-  }, [category]);
+  }, [category, onCategoryChange]);
 
   useEffect(() => {
     setFavorite(category.favorite);
