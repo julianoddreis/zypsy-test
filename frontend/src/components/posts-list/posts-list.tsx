@@ -29,8 +29,7 @@ export function PostsList({ categories }: PostsList) {
       <div className={Styles.List}>
         <div className={Styles.Header}>
           <h2 className={Styles.Title}>
-            Found {posts.value.length} posts{" "}
-            {posts.value.length > 0 ? `of "${category.name}"` : ""}
+            Found {posts.value.length} posts of &quot;{category.name}&quot;
           </h2>
         </div>
         <div className={Styles.Posts}>
