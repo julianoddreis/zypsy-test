@@ -1,13 +1,21 @@
 "use client";
 
-import { useCategories } from "@/hooks/categories";
 import { FilterProvider } from "@/providers/filter";
 import { Sidebar } from "@/components/sidebar";
 import { PostsList } from "@/components/posts-list";
+import { CategoriesProvider, useCategories } from "@/providers/categories";
 
 import Styles from "./page.module.css";
 
-export default function Home() {
+export default function HomeContainer() {
+  return (
+    <CategoriesProvider>
+      <Home />
+    </CategoriesProvider>
+  );
+}
+
+function Home() {
   const { categories } = useCategories();
 
   if (categories.loading) {

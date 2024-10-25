@@ -5,11 +5,11 @@ import { IPost } from "@/domain/post/models";
 import { CategoryRepository } from "@/repositories/category";
 
 interface PostsHook {
-  readonly posts: Async<IPost[]>;
+  readonly posts: Async<Array<IPost>>;
 }
 
 export function usePosts(categoryId: string): PostsHook {
-  const [task, setTask] = useState<Async<IPost[]>>({ loading: true });
+  const [task, setTask] = useState<Async<Array<IPost>>>({ loading: true });
 
   useEffect(() => {
     const fetchPosts = async () => {
