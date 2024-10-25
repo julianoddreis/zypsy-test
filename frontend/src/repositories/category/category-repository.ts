@@ -22,13 +22,15 @@ class _CategoryRepository implements ICategoryRepository {
     });
   }
 
-  async setFavorite(id: string, favorite: boolean): Promise<void> {
-    const response = await fetch(`${API_URL}/categories/${id}`, {
+  async setFavorite(category: ICategory, favorite: boolean): Promise<void> {
+    const response = await fetch(`${API_URL}/categories/${category.id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ favorite }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: category.id,
+        name: category.name,
+        favorite: favorite,
+      }),
     });
 
     if (response.status !== 200) {
@@ -43,7 +45,7 @@ class _CategoryRepository implements ICategoryRepository {
       throw new Error("Failed to list posts");
     }
 
-    const json = response.json();
+    const json = await response.json();
 
     Assert.array(json);
 

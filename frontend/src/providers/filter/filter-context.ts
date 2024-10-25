@@ -1,3 +1,4 @@
+import { ICategory } from "@/domain/category/models";
 import { createContext, useContext } from "react";
 
 export enum FilterType {
@@ -7,9 +8,9 @@ export enum FilterType {
 
 interface IFilterContext {
   readonly type: FilterType;
-  readonly currentCategoryId: string;
+  readonly category: ICategory;
   readonly onTypeChange: (type: FilterType) => void;
-  readonly onCurrentCategoryIdChange: (categoryId: string) => void;
+  readonly onCategoryChange: (category: ICategory) => void;
 }
 
 export const FilterContext = createContext<IFilterContext | null>(null);

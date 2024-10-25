@@ -1,0 +1,27 @@
+.Component {
+  padding: 64px 24px;
+  max-height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--accent);
+}
+
+.Header {
+  padding: 20px 36px;
+  border-bottom: 1px solid var(--accent);
+}
+
+.Title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--foreground-secondary);
+}
+
+.Posts {
+  padding: 0 16px;
+}

@@ -1,10 +1,10 @@
-import { FilterType, useFilters } from "@/providers/filter";
+import { useMemo } from "react";
 
+import { FilterType, useFilters } from "@/providers/filter";
 import { Radio } from "@/components/radio";
 import { ICategory } from "@/domain/category/models";
+import { CategoryButton } from "@/components/category-button";
 
-import { useMemo } from "react";
-import { CategoryButton } from "./components/category-button";
 import Styles from "./sidebar.module.css";
 
 interface SidebarProps {

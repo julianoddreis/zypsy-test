@@ -2,9 +2,10 @@
 
 import { useCategories } from "@/hooks/categories";
 import { FilterProvider } from "@/providers/filter";
+import { Sidebar } from "@/components/sidebar";
+import { PostsList } from "@/components/posts-list";
 
 import Styles from "./page.module.css";
-import { Sidebar } from "@/components/sidebar";
 
 export default function Home() {
   const { categories } = useCategories();
@@ -18,10 +19,10 @@ export default function Home() {
   }
 
   return (
-    <FilterProvider initialCategoryId={categories.value[0].id}>
+    <FilterProvider initialCategory={categories.value[0]}>
       <div className={Styles.Page}>
         <Sidebar categories={categories.value} />
-        {/* <PostsList /> */}
+        <PostsList categories={categories.value} />
       </div>
     </FilterProvider>
   );

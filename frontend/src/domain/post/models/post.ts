@@ -9,6 +9,7 @@ export interface IPost {
 
 export function createPost(data: any): IPost {
   Assert.object(data);
+  Assert.string(data.id);
   Assert.string(data.description);
   Assert.string(data.date);
   Assert.array(data.categories);

@@ -11,17 +11,17 @@ interface CategoryButtonProps {
 }
 
 export function CategoryButton({ category }: CategoryButtonProps) {
-  const { currentCategoryId, onCurrentCategoryIdChange } = useFilters();
+  const { category: currentCategory, onCategoryChange } = useFilters();
 
   const [favorite, setFavorite] = useState(category.favorite);
   const [loading, setLoading] = useState(false);
 
   const type = useMemo(() => {
-    if (currentCategoryId === category.id) {
+    if (currentCategory.id === category.id) {
       return "primary";
     }
     return "secondary";
-  }, [currentCategoryId, category.id]);
+  }, [currentCategory.id, category.id]);
 
   const handleStar = useCallback(async () => {
     const newValue = !favorite;
@@ -29,7 +29,7 @@ export function CategoryButton({ category }: CategoryButtonProps) {
     try {
       setLoading(true);
       setFavorite(newValue);
-      await CategoryRepository.setFavorite(category.id, newValue);
+      await CategoryRepository.setFavorite(category, newValue);
     } catch (error) {
       setFavorite(!newValue);
     } finally {
@@ -38,7 +38,7 @@ export function CategoryButton({ category }: CategoryButtonProps) {
   }, [favorite, category.id]);
 
   const handleChange = useCallback(() => {
-    onCurrentCategoryIdChange(category.id);
+    onCategoryChange(category);
   }, [category.id]);
 
   return (

@@ -1,0 +1,28 @@
+.Post {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--accent);
+  }
+}
+
+.Title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.Description {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--foreground-secondary);
+  margin-bottom: 16px;
+}
+
+.Categories {
+  display: flex;
+  gap: 8px;
+}
